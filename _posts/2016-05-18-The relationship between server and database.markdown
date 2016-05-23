@@ -46,7 +46,7 @@ The next step is to make the server interact with the client and the database. N
 
 {% highlight javascript %}
 //serve client files such as html and css
-app.use(express.static(yourdirectorypath + '/../client'));
+app.use(express.static(__dirname + '/../client'));
 
 var headers = {
     'access-control-allow-origin': '*',
@@ -57,13 +57,15 @@ var headers = {
 
 //the server receives a 'GET' request
 app.get('/', function(req, res) {
-    res.writeHead(200, headers);
     //find the requested data from the database using mysql query method
     db.query('SELECT * FROM tablename', function(err, data) {
         if (err) {
         	console.log(err);
+            //send the status code 500 for the server error 
+            res.writeHead(500, headers);
         } else {
         	//send the data to the client
+            res.writeHead(200, headers);
         	res.end(JSON.stringify(data));
     	}
     });
@@ -71,15 +73,17 @@ app.get('/', function(req, res) {
 
 //the server receives a 'POST' request
 app.post('/', function(req, res) {
-    res.writeHead(201, headers);
     //insert the data to the database using mysql query method
     //req.body is the object that contains the data, which needs to be inserted 
     db.query('INSERT INTO tablename (columnname) VALUES ("' + req.body.data + '")', 
     function(err, result) {
         if (err) {
         	console.log(err);
+            //send the status code 400 for the bad request
+            res.writeHead(400, headers);
         } else {
-        	res.end(result);
+            res.writeHead(201, headers);
+        	res.end();
         }	
     });
 });   
