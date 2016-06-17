@@ -9,7 +9,7 @@ In this post, I would like to provide the big picture of how client, server and 
 
 However, if there are server and client only, the data, which the client sends to and receives from the server, gets removed whenever the server restarts. For this reason, database is necessary to maintain the data persistence beyond the program's current life cycle. With a database in place, when the client sends the data, the server receives the data and stores the data in the database. Likewise, when the client requests to get the data, the server receives the request and finds the data from the database and sends back to the client. This way, the database stores the data even after the server stops.      
 
-Let's talk about this relationship between client, server and database in terms of the available tools to actually see what it is like to build server and database. Node.js is a tool that creates Web servers using JavaScript. Assuming you already have installed Node.js with your package manager, this is how you use Node.js to create the server using its framework, express:
+Let's talk about this relationship between client, server and database in terms of the available tools to actually see what it is like to build server and database. Node.js is a tool that creates web servers using JavaScript. Assuming you already have installed Node.js with your package manager of choice, then this is how you use Node.js to create the server using one of the most popular web application framework, [Express](http://expressjs.com/):
 
 {% highlight javascript %}
 //set up node express
@@ -40,9 +40,9 @@ db.connect();
 
 At this point, you might wonder, "If Node.js is just a tool to create a server and MySQL is just a tool to interact with the database, where is the actual server and database?"
 
-The actual server and database get created in your local computer for now. However, when you deploy your app, you will be using cloud hosting services such as Heroku, Digital ocean or Amazon Web Services. These companies have servers that interact with multiple clients along with gigantic databases. By using their services, you have access to their servers, which host the client and server files that you provide. You can also rent some portion of their databases. 
+The actual server and database get created in your local computer for now. However, when you deploy your app, you will likely be using one of the cloud hosting services such as [Heroku](https://www.heroku.com/), [DigitalOcean](https://www.digitalocean.com/) or [Amazon Web Services](https://aws.amazon.com/). These companies have servers that interact with multiple clients along with gigantic databases. By using their services, you have access to their servers, which host the client and server files that you provide. You can also rent some portion of their databases.
 
-The next step is to make the server interact with the client and the database. Node express get and post method enables the server to handle the client requests. After receiving the client requests via these methods, you need to use MySQL query method to tell the server to reach out to the database to find or store the data the client has inquired about. After MySQL finished performing the required action, the server ends the response by sending the client the retreived data or an acknowledgement that the data has been stored successfully. Take a moment to go through the example codes:
+The next step is to make the server interact with the client and the database. Node.js Express supports HTTP `GET` and `POST` methods, which enables the server to handle the client requests. After receiving the client requests via these HTTP methods, the server submits MySQL queries via `db.query(queryString, callback)` to reaching out to the database to find or store the data the client has inquired about. After MySQL finished performing the required action, the server completes the response(`res.end()`) by sending the client the retreived data or an acknowledgement that the data has been stored successfully. Take a moment to go through the example codes:
 
 {% highlight javascript %}
 //serve client files such as html and css
