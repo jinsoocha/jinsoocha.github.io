@@ -43,7 +43,7 @@ var Cat = class {
 };
 {% endhighlight %}
 
-To actually create an instance of pseudoclasscial classes, it is required to use 'new' keyword. In this example, cry method is being invoked as soon as the class gets instantiated. For this reason, the below instantiation will return 'meow' once:
+To actually create an instance of pseudoclasscial classes, it is required to use 'new' keyword. In this example, cry method is being invoked as soon as the class gets instantiated. For this reason, the below instantiation will log 'meow' once:
 
 {% highlight javascript %}
 new Cat('nala', 3, 'meow');
@@ -70,7 +70,7 @@ CryingCat.prototype.cry = function() {
 };
 {% endhighlight %}
 
-An important thing to note is that it is required to use Object.create to correctly inherit the properties from Cat. Let's go over some other examples that are often mistaken as the right way to establish the prototype relationship between super and subclasses.
+An important thing to note is that it is required to use Object.create to correctly inherit the properties from Cat. Let's go over some other examples that are often mistaken as the right way to establish the prototype relationship between super and subclasses:
 
 {% highlight javascript %}
 //WRONG
@@ -115,6 +115,12 @@ var CryingCat = class extends Cat {
 
 ES6 syntax is a lot cleaner than ES5 as ES6 abstracts a decent amount of codes from ES5 using class extends and super.
 
+Now, we have a subclass CryingCat, which has all the properties that Cat has, but a different cry method. Upon instantiation, CryingCat logs its sound every second rather than once: 
+
+{% highlight javascript %}
+new CryingCat('mala', 2, 'yowl');
+// logs 'yowl' every second
+{% endhighlight %}
 <!-- Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
 [jekyll-docs]: http://jekyllrb.com/docs/home
