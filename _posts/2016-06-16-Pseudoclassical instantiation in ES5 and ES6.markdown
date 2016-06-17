@@ -2,12 +2,12 @@
 layout: post
 title:  "Pseudoclassical instantiation in ES5 and ES6"
 date:   2016-06-16 16:31:38 -0700
-categories: frontend 
+categories: Javascript
 ---
 
-Classes are special functions in Javascript. A parent class is called superclass and it inherits its properties to its children called subclasses. In this post, we will go over how to write superclass and subclasses using pseudoclassical style both in ES5 and ES6. 
+Classes are special functions in Javascript, which allow the inheritance of object properties. A parent class is called superclass and it delegates its properties to its children called subclasses. In this post, we will go over how to write superclass and subclasses using pseudoclassical style both in ES5 and ES6. 
 
-The example superclass we will be building is called Cat. It takes name, age and sound as arguments and has name, age, sound, cry as properties. As a convention, the class name always starts with a capital letter. The functions in pseudoclassical classes will be defined outside of the class scope, with prototype method.
+The example superclass we will be building is called Cat. It takes name, age and sound as arguments and has name, age, sound and cry as properties. As a convention, the class name always starts with a capital letter. The functions in pseudoclassical classes will be defined outside of the class scope, with prototype method.
 
 This shows how to create a superclass in ES5:
 
@@ -50,7 +50,7 @@ new Cat('nala', 3, 'meow');
 // logs 'meow' once
 {% endhighlight %}
 
-Now we have a superclass Cat, which has name, age and sound, and also cries once when it gets instantiated. Next, we will create a subclass CryingCat, which inherits all these properties and methods from Cat. On the top of them, CryingCat will have a modified version of cry method, which allows CryingCat to cry every second after the instantiation. 
+Now, we have a superclass Cat, which has name, age and sound, and also cries once when it gets instantiated. Next, we will create a subclass CryingCat, which inherits all these properties and methods from Cat. On top of them, CryingCat will have a modified version of cry method, which allows CryingCat to cry every second after the instantiation. 
 
 This is how to create a subclass in ES5:
 
@@ -70,7 +70,7 @@ CryingCat.prototype.cry = function() {
 };
 {% endhighlight %}
 
-An important thing to note here is that it is required to use Object.create to correctly inherit the properties from Cat. Let's go over some other examples that are often mistaken as the right way to establish the prototype relationship between super and subclasses.
+An important thing to note is that it is required to use Object.create to correctly inherit the properties from Cat. Let's go over some other examples that are often mistaken as the right way to establish the prototype relationship between super and subclasses.
 
 {% highlight javascript %}
 //WRONG
@@ -93,7 +93,7 @@ CryingCat.prototype = Object.create(Cat.prototype);
 
 This allows CryingCat to inherit all the properties from Cat. Also, this does not create an instance of Cat so arguments do not need to be passed. 
 
-Another thing to note is that when creating a class, it always comes with constructor property, which refers to the class itself. When creating CryingCat, its constructor was set to CryingCat. However, Object.create overwrites CryingCat's constructor as Cat rather than CryingCat, so we need to reset CryingCat's constructor as CryingCat.
+Another thing to note is that when creating a class, it always comes with constructor property, which refers to the class itself. When creating CryingCat, its constructor was set to CryingCat. However, Object.create overwrites CryingCat's constructor as Cat rather than CryingCat, so we need to reset CryingCat's constructor as CryingCat:
 
 {% highlight javascript %}
 CryingCat.prototype.constructor = CryingCat;
@@ -108,11 +108,12 @@ This is how to create a subclass in ES6:
 var CryingCat = class extends Cat {
   cry() {
     super.cry();
-    setTimeout(function() { super.cry(); }, 1000);  
+    setInterval(function() { super.cry(); }, 1000);  
   }
 };
 {% endhighlight %}
 
+ES6 syntax is a lot cleaner than ES5 as ES6 abstracts a decent amount of codes from ES5 using class extends and super.
 
 <!-- Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
