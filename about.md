@@ -1,3 +1,9 @@
+---	
+layout: page	
+title: About	
+permalink: /about/	
+---
+
 Hi, I am Jinsoo, an ICF trained coach, passionate about helping people with expat transition and financial mindfulness. 
 
 I have been an expat myself since I left my home country, Korea, and moved to China, and then to the United States in 2011. I started out as a sales representative in finance industry and later transitioned into a software engineer in Silicon Valley. As an expat, I have overcome many hurdles in a professional environment in the United States and eventually built a successful career. However, there were times I wondered why things were not working. I know there are people out there going through the smiliar journeys. In those journeys, I want to be the light to guide people find clarity and gain confidence in their expat transition.
