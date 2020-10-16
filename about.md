@@ -4,7 +4,7 @@ title: About
 permalink: /about/	
 ---
 
-Hi, I am Jinsoo, an Inclusion Support coach, passionate about helping people gain their confidence back when and where they do not feel belonged due to their differences.
+Hi, I am Jinsoo, an Inclusion Support Coach, passionate about helping people gain their confidence back when and where they do not feel belonged due to their differences.
 
 I left my home country, Korea, and moved to China, and then to the United States in 2011. I started out as a sales representative in finance industry and later transitioned into a software engineer in Silicon Valley. As an expat, I have overcome many hurdles in a personal and professional environment in the United States. There were times I wondered why things were not working as I wanted. I know there are people out there going through the smiliar journeys. In those journeys, I want to be the light to guide people find clarity and gain confidence in their career and life.
 
