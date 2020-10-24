@@ -4,7 +4,7 @@ title: About
 permalink: /about/	
 ---
 
-Hi, I am Jinsoo, a Diversity Empowerment Coach, passionate about helping people gain their confidence when and where they do not feel belonged due to their perceived and actual differences.
+Hi, I am Jinsoo, a Diversity Empowerment Coach, passionate about helping people gain confidence and improve a sense of belonging by empowering difference.
 
 I left my home country, Korea, and moved to China, and then to the United States in 2011. I started out as a sales representative in finance industry and later transitioned into a software engineer in Silicon Valley.
 
